@@ -24,7 +24,7 @@ section{
 }
 
 form{
-  height: 60%;
+  height: 600px;
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -47,10 +47,55 @@ span{
   position: relative;
 }
 
-.length::after{
+span::after{
   position: absolute;
-  content:"dwsadwaddw";
   bottom: -20px;
   left: 0;
   font-size: 12px;
+  color: red;
+}
+
+.length::after{
+  content: "Hasło musi zawierać min. 6 znaków";
+}
+
+.symbols::after{
+  content: "Hasło musi zawierać min. 3 litery, 1 znak specjalny, 1 cyfrę i 1 dużą literę";
+}
+
+.phone-number{
+  display: flex;
+}
+
+.code-select{
+  width: 70px;
+  height: 100%;
+  border: 1px solid black;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.codes-list{
+  display: none;
+  position: absolute;
+  bottom: -80px;
+  left: -1px;
+  width: 100%;
+  height: 80px;
+  overflow: auto;
+  border: 1px solid black;
+  border-top: 0;
+  .code{
+    margin: 0;
+    text-align: center;
+    background-color: white;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+.phone-number input{
+  width: calc(100% - 75px)
 }
