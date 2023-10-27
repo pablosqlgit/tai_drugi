@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zarejestruj się</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section>
+    <form method="post" action="register.php">
+      <header>
+        <h1>Stwórz konto</h1>
+      </header>
+      <input type="text" name="login" placeholder="login">
+      <span class="pass-control">
+        <input type="password" name="pass" placeholder="password">
+      </span>
+      <input type="password" name="rPass" placeholder="repeat password">
+      <input type="number" name="phone" placeholder="phone number">
+      <input type="submit" id="submit" value="Zarejestruj się">
+    </form>
+  </section>
+  <script src="validate.js"></script>
+</body>
+</html>
