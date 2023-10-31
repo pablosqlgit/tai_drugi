@@ -9,6 +9,7 @@ body {
 h1 {
   margin: 0;
   font-size: 2rem;
+  font-weight: 400;
 }
 
 header {
@@ -40,22 +41,22 @@ input {
   padding: 5px;
 }
 
-input[type=text], input[type=password], input[type=number]{
+input[type=text], input[type=password], input[type=number] {
   border: 0;
   border-bottom: 1px solid black;
 }
 
-input:focus{
+input:focus {
   outline: none;
 }
 
-input[type=submit]{
+input[type=submit] {
   background-color: #8a39ef;
   border: none;
   color: #fff;
 }
 
-input[type=submit]:hover{
+input[type=submit]:hover {
   cursor: pointer;
 }
 
@@ -99,7 +100,7 @@ span::after {
   place-items: center;
 }
 
-.code-select:hover{
+.code-select:hover {
   cursor: pointer;
 }
 
@@ -114,11 +115,13 @@ span::after {
   border: 1px solid black;
   border-top: 0;
 }
+
 .codes-list .code {
   margin: 0;
   text-align: center;
   background-color: white;
 }
+
 .codes-list .code:hover {
   cursor: pointer;
 }

@@ -43,6 +43,8 @@ codesList.addEventListener("click", (e) => {
   codesList.style.display = "none"
 })
 
+console.log('ds')
+
 submit.addEventListener("click", e => {
   e.preventDefault()
 });
