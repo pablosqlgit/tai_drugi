@@ -1,6 +1,6 @@
 <html>
   <head>
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="../styles/register.css">
   </head>
   <body>
     <section>
@@ -15,9 +15,10 @@
           if(isset($_POST['login'])){
             $login = $_POST["login"];
             $pass = $_POST["pass"];
+            $hash = password_hash($pass,PASSWORD_DEFAULT);
             $phone = $_POST["phone"]; 
 
-            $insertQ = "INSERT INTO users VALUES(null, '$login', '$pass' , '$phone')";
+            $insertQ = "INSERT INTO users VALUES(null, '$login', '$hash' , '$phone')";
             $selectQ = "SELECT * FROM users WHERE login = '$login'";
             $res = mysqli_query($conn, $selectQ);
 
