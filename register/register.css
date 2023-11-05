@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  overflow: hidden;
+}
+
+section {
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+* {
+  color: white;
+  font-weight: 300;
+}
+
+.register-container {
+  background-color: #8a39ef;
+  width: 100vw;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
+  box-shadow: 0px 0px 10px 1px gray;
+}
+.register-container header {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.register-container header h1 {
+  font-size: 1.8rem;
+}
+.register-container header h1, .register-container header h6 {
+  margin: 0;
+  white-space: nowrap;
+}
+.register-container form {
+  height: 30%;
+  display: grid;
+  place-items: center;
+}
+.register-container form input {
+  background-color: transparent;
+  border: 2px solid #fff;
+  padding: 10px 30px;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+.register-container form input:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
+}/*# sourceMappingURL=register.css.map */
