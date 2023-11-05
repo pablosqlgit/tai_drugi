@@ -39,6 +39,7 @@ input {
   height: 50px;
   box-sizing: border-box;
   padding: 5px;
+  font-size: 1rem;
 }
 
 input[type=text], input[type=password], input[type=number]{
@@ -68,12 +69,17 @@ span {
   position: relative;
 }
 
-span::after {
+.different {
+  position: relative;
+}
+
+span::after, .different::after {
   position: absolute;
   bottom: -20px;
   left: 0;
   font-size: 12px;
   color: red;
+  white-space: nowrap;
 }
 
 .length::after {
@@ -81,11 +87,26 @@ span::after {
 }
 
 .symbols::after {
-  content: "Hasło musi zawierać min. 3 litery, 1 znak specjalny, 1 cyfrę i 1 dużą literę";
+  content: "Hasło nie spełnia wymagań co do złożoności";
 }
 
 .not-allowed::after {
-  content: "Hasło zawiera niedozwolone znaki";
+  content: "Pole zawiera niedozwolone znaki";
+}
+
+.different::after{
+  content: "Hasła nie są podobne";
+}
+
+.login-length::after {
+  content: "Login musi mieć długość min. 6 znaków"
+}
+
+.phone-control {
+  width: 100%;
+  input{
+    width: 100% !important;
+  }
 }
 
 .phone-number {
@@ -107,14 +128,19 @@ span::after {
 .codes-list {
   display: none;
   position: absolute;
-  bottom: -80px;
+  bottom: -100px;
   left: -1px;
-  width: 100%;
-  height: 80px;
+  width: 300%;
+  height: 100px;
   overflow: auto;
-  border: 1px solid black;
+  overflow-x: hidden;
   border-top: 0;
 }
+
+.dial-code-search {
+  width: 100% !important;
+}
+
 .codes-list .code {
   margin: 0;
   text-align: center;
@@ -126,4 +152,29 @@ span::after {
 
 .phone-number input {
   width: calc(100% - 75px);
+}
+
+.flag-icon{
+  width: 30px;
+}
+
+.dial-code-container{
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  p{
+    width: 50%;
+  }
+}
+
+@media(max-width: 1100px){
+  form{
+    width: 50%;
+  }
+}
+
+@media(max-width: 768px){
+  form{
+    width: 80%;
+  }
 }
