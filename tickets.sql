@@ -44,7 +44,7 @@ CREATE TABLE `events` (
   `description` varchar(500) NOT NULL,
   `location` varchar(255) NOT NULL,
   `date` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `events`
@@ -65,9 +65,9 @@ INSERT INTO `events` (`id`, `name`, `description`, `location`, `date`) VALUES
 
 CREATE TABLE `images` (
   `imgID` int NOT NULL,
-  `src` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `src` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `eventID` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `images`
@@ -89,10 +89,10 @@ INSERT INTO `images` (`imgID`, `src`, `eventID`) VALUES
 CREATE TABLE `tickets` (
   `ticketID` int NOT NULL,
   `eventID` int NOT NULL,
-  `ticketName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ticketName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `price` float NOT NULL,
   `quantity` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tickets`
@@ -121,7 +121,7 @@ CREATE TABLE `users` (
   `login` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `phone` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
