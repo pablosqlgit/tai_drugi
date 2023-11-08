@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  animation: fadeIn 2s;
+}
+
+h1 {
+  margin: 0;
+}
+
+nav {
+  position: fixed;
+  z-index: 9;
+  height: 100px;
+  width: 100vw;
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.226);
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .functional-buttons {
+  display: flex;
+  gap: 30px;
+}
+nav .functional-buttons form {
+  height: 35px;
+}
+nav .functional-buttons form input {
+  height: 100%;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 25px;
+  background-color: #8a39ef;
+  color: #fff;
+  transition: 0.3s;
+}
+nav .functional-buttons form input:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+article {
+  min-height: 70vh;
+}
+
+section {
+  padding: 130px 30px 30px 30px;
+  margin: 0;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+}
+
+.buy-ticket {
+  width: 100%;
+  text-align: right;
+  padding: 5px 0;
+}
+.buy-ticket a {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 25px;
+  background-color: #8a39ef;
+  color: #fff;
+  transition: 0.3s;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.buy-ticket a:hover {
+  cursor: pointer;
+  background: hsl(266.703, 85%, 40%);
+}
+
+.concert-container {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.226);
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.concert-container .event-name {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+}
+.concert-container .event-image {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  height: 70%;
+  overflow: hidden;
+}
+.concert-container img {
+  height: 100%;
+  width: 100%;
+}
+.concert-container .event-data {
+  width: 100%;
+}
+.concert-container span {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+}
+.concert-container form {
+  width: 100%;
+  text-align: right;
+  padding-right: 15px;
+}
+
+@media (max-width: 1368px) {
+  section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1000px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 700px) {
+  section {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 540px) {
+  h1 {
+    font-size: 1rem;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=style.css.map */
