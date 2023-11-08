@@ -7,7 +7,7 @@
       <?php 
         require_once $_SERVER['DOCUMENT_ROOT'] . '/tai_drugi/conn.php';
         if(isset($_POST['login-button'])){
-          header("Location: ../login/index.html");
+          header("Location: ../login/login.php");
         }else if(isset($_POST['register-button'])){
           header("Location: index.html");
         }else{

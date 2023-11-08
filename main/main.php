@@ -1,6 +1,12 @@
-<!-- <?php 
+<?php 
   require_once $_SERVER['DOCUMENT_ROOT'] . '/tai_drugi/conn.php';
-?> -->
+  session_start();
+  if($_SESSION['logstatus'] === "no") {
+    header("Location: ../login/login.php");
+  }elseif($_SESSION['logstatus'] = "yes"){
+    echo "witaj na ticketseventorder " . $_SESSION['username'] . "!";
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,17 +24,23 @@
       </h1>
     </span>
     <div class='functional-buttons'>
-      <form>
+      <form method='post'>
         <input type='submit' value='Moje konto' />      
       </form>
       <form>
-        <input type='submit' value='Wyloguj się' />      
+        <input type='submit' value='Wyloguj się' name='logout_input' />      
       </form>
     </div>
   </nav>
   <article>
     <section>
       <?php 
+      
+        if (isset($_POST['logout_input'])) {
+          $_SESSION['logstatus'] = "no";
+          header('Location: ../login/login.php');
+        }
+      
         require_once $_SERVER['DOCUMENT_ROOT'] . '/tai_drugi/conn.php';
 
         $selectQ = "SELECT * FROM events INNER JOIN images ON images.eventID = events.id INNER JOIN cheapest ON cheapest.eventID = events.id;";
