@@ -1,31 +1,38 @@
+<?php 
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/tai_drugi/conn.php';
+  session_start();
+  if($_SESSION['logstatus'] === "no") {
+    header("Location: ../login/login.php");
+  }
+  ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strona Główna</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <nav>
-    <span>
-      <h1>
-        Witaj, {username}!
-      </h1>
-    </span>
-    <div class='functional-buttons'>
-      <form method='post'>
-        <input type='submit' value='Moje konto' />      
-      </form>
-      <form>
-        <input type='submit' value='Wyloguj się' name='logout_input' />      
-      </form>
-    </div>
-  </nav>
-  <article>
-    <section>
-      <?php 
-      
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <span>
+        <h1>
+          Witaj, <?php echo $_SESSION['username'];?>!
+        </h1>
+      </span>
+      <div class='functional-buttons'>
+        <form method='post'>
+          <input type='submit' value='Moje konto' />      
+        </form>
+        <form action="main.php" method="post">
+          <input type='submit' value='Wyloguj się' name='logout_input' />      
+        </form>
+      </div>
+    </nav>
+    <article>
+      <section>
+        <?php 
         if (isset($_POST['logout_input'])) {
           $_SESSION['logstatus'] = "no";
           header('Location: ../login/login.php');

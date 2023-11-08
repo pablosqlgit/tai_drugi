@@ -4,12 +4,11 @@
     session_start();
     if($_SESSION['logstatus'] === "yes"){
         header("Location: ../main/main.php");
-    }else{
-        session_destroy();
-        session_start();
-        $_SESSION['logstatus'] = "no";
     }
-
+    else{
+        session_reset();
+        $_SESSION['logstatus'] = "no";
+      }
 ?>
 
 <!DOCTYPE html>
@@ -48,18 +47,20 @@
     $passRes = mysqli_query($conn,$passQ);
     
     
-    if (mysqli_num_rows($userRes) == 1) {
+    if(isset($_POST['submitlogin'])){
+      if (mysqli_num_rows($userRes) == 1) {
         $passCheck = mysqli_fetch_assoc($passRes);
         if (password_verify($password, $passCheck['pass'])){
-            header("Location:../main/main.php");
-            $_SESSION['username'] = $username;
-            $_SESSION['logstatus'] = "yes";
+          header("Location:../main/main.php");
+          $_SESSION['username'] = $username;
+          $_SESSION['logstatus'] = "yes";
         }elseif($password === $passCheck['pass']){ //delete it after deployment;
-            header("Location:../main/main.php");
-            $_SESSION['username'] = $username;
-            $_SESSION['logstatus'] = "yes";
+          header("Location:../main/main.php");
+          $_SESSION['username'] = $username;
+          $_SESSION['logstatus'] = "yes";
         }
-    }elseif (mysqli_num_rows($userRes) == 0) {
+      }elseif (mysqli_num_rows($userRes) == 0) {
         echo "such a user does not exists";
+      }
     }
 ?>
