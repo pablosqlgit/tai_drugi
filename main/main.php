@@ -1,13 +1,3 @@
-<?php 
-  require_once $_SERVER['DOCUMENT_ROOT'] . '/tai_drugi/conn.php';
-  session_start();
-  if($_SESSION['logstatus'] === "no") {
-    header("Location: ../login/login.php");
-  }elseif($_SESSION['logstatus'] = "yes"){
-    echo "witaj na ticketseventorder " . $_SESSION['username'] . "!";
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
