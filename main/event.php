@@ -4,7 +4,7 @@
   if($_SESSION['logstatus'] === "no") {
     header("Location: ../login/login.php");
   }
-  
+
   if (isset($_POST['logout_input'])) {
     $_SESSION['logstatus'] = "no";
     header('Location: ../login/login.php');
@@ -12,6 +12,10 @@
   
   $urlQ = str_replace('event=', '', $_SERVER['QUERY_STRING']);
   // echo $urlQ;
+
+  if(isset($_POST['buy-ticket'])){
+    header("Location: ../buy/buy.php?event=" . $urlQ);
+  }
 
   $eventQuery = "SELECT name, description, location, date FROM events WHERE id=$urlQ";
   $imageQuery = "SELECT src FROM images WHERE eventID=$urlQ";
@@ -81,8 +85,8 @@
           </div>
           <!-- miejsce na button -->
           <div>
-            <form action="" method="post">
-              <button>KUP SE BILET</button>
+            <form method="post">
+              <input type='submit' value='Kup se bilet' name='buy-ticket'></input>
             </form>
           </div>
         </div>
