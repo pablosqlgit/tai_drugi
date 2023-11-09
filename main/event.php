@@ -12,26 +12,29 @@
   
   $urlQ = str_replace('event=', '', $_SERVER['QUERY_STRING']);
   // echo $urlQ;
-
+  
   if(isset($_POST['buy-ticket'])){
     header("Location: ../buy/buy.php?event=" . $urlQ);
   }
-
+  
   $eventQuery = "SELECT name, description, location, date FROM events WHERE id=$urlQ";
   $imageQuery = "SELECT src FROM images WHERE eventID=$urlQ";
   $eventQueryUse = mysqli_query($conn, $eventQuery);
   $imageQueryUse = mysqli_query($conn, $imageQuery);
-
+  
   $eventInfo = mysqli_fetch_assoc($eventQueryUse);
   $imageInfo = mysqli_fetch_assoc($imageQueryUse);
-
+  
   $eventName =  $eventInfo['name'];
   $eventDesc = $eventInfo['description'];
   $eventLocat = $eventInfo['location'];
   $eventDate =  $eventInfo['date'];
-
+  
   $imageSrc = $imageInfo['src'];
-
+  
+  $_SESSION['urlQ'] = $urlQ;
+  $_SESSION['eventName'] = $eventName;
+  
   // echo $imageSrc;
 ?>
 <!DOCTYPE html>
