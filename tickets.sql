@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Lis 08, 2023 at 02:26 PM
--- Wersja serwera: 8.0.30
--- Wersja PHP: 8.1.10
+-- Host: 127.0.0.1
+-- Czas generowania: 09 Lis 2023, 11:26
+-- Wersja serwera: 10.4.22-MariaDB
+-- Wersja PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,17 +18,17 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tickets`
+-- Baza danych: `tickets`
 --
 
 -- --------------------------------------------------------
 
 --
 -- Zastąpiona struktura widoku `cheapest`
--- (See below for the actual view)
+-- (Zobacz poniżej rzeczywisty widok)
 --
 CREATE TABLE `cheapest` (
-`eventID` int
+`eventID` int(11)
 ,`lowest_value` float
 );
 
@@ -39,23 +39,23 @@ CREATE TABLE `cheapest` (
 --
 
 CREATE TABLE `events` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `location` varchar(255) NOT NULL,
   `date` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `events`
+-- Zrzut danych tabeli `events`
 --
 
 INSERT INTO `events` (`id`, `name`, `description`, `location`, `date`) VALUES
-(1, 'Travis Scott Concert', 'Koncert Travisa Scotta w Poznań, Poland', 'Poznań', '2023-11-29'),
+(1, 'Travis Scott ', 'Koncert Travisa Scotta w Poznań, Poland', 'Poznań', '2023-11-29'),
 (2, 'The Weeknd', 'Koncert The Weeknd w Poznań, Poland', 'Poznań', '2023-11-09'),
-(3, 'Pitbull Concert', 'Koncert Pitbull w Poznań, Poland', 'Poznań', '2023-12-15'),
-(4, 'Drake Concert', 'Koncert Drake w Poznań, Poland', 'Poznań', '2024-01-20'),
-(5, 'Future Concert', 'Koncert Future w Poznań, Poland', 'Poznań', '2024-01-25');
+(3, 'Pitbull ', 'Koncert Pitbull w Poznań, Poland', 'Poznań', '2023-12-15'),
+(4, 'Drake ', 'Koncert Drake w Poznań, Poland', 'Poznań', '2024-01-20'),
+(5, 'Future ', 'Koncert Future w Poznań, Poland', 'Poznań', '2024-01-25');
 
 -- --------------------------------------------------------
 
@@ -64,13 +64,13 @@ INSERT INTO `events` (`id`, `name`, `description`, `location`, `date`) VALUES
 --
 
 CREATE TABLE `images` (
-  `imgID` int NOT NULL,
-  `src` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `eventID` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `imgID` int(11) NOT NULL,
+  `src` varchar(255) NOT NULL,
+  `eventID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `images`
+-- Zrzut danych tabeli `images`
 --
 
 INSERT INTO `images` (`imgID`, `src`, `eventID`) VALUES
@@ -83,19 +83,34 @@ INSERT INTO `images` (`imgID`, `src`, `eventID`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `orders`
+--
+
+CREATE TABLE `orders` (
+  `orderID` int(11) NOT NULL,
+  `userName` int(11) NOT NULL,
+  `eventName` varchar(255) NOT NULL,
+  `eventID` int(11) NOT NULL,
+  `ticketPrice` float NOT NULL,
+  `ticketDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `tickets`
 --
 
 CREATE TABLE `tickets` (
-  `ticketID` int NOT NULL,
-  `eventID` int NOT NULL,
-  `ticketName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ticketID` int(11) NOT NULL,
+  `eventID` int(11) NOT NULL,
+  `ticketName` varchar(255) NOT NULL,
   `price` float NOT NULL,
-  `quantity` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `quantity` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tickets`
+-- Zrzut danych tabeli `tickets`
 --
 
 INSERT INTO `tickets` (`ticketID`, `eventID`, `ticketName`, `price`, `quantity`) VALUES
@@ -117,14 +132,14 @@ INSERT INTO `tickets` (`ticketID`, `eventID`, `ticketName`, `price`, `quantity`)
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `login` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `phone` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Zrzut danych tabeli `users`
 --
 
 INSERT INTO `users` (`id`, `login`, `pass`, `phone`) VALUES
@@ -135,7 +150,8 @@ INSERT INTO `users` (`id`, `login`, `pass`, `phone`) VALUES
 (10, 'azazaz1', 'zaq1@WSX', '222222222'),
 (11, 'azazaz12', 'zaq1@WSX', '222222222'),
 (12, 'azazaz123', 'zaq1@WSX', '222222222'),
-(13, 'zaqzaq', 'zaq1@WSX', '12446778899');
+(13, 'zaqzaq', 'zaq1@WSX', '12446778899'),
+(14, 'admin', 'admin', '');
 
 -- --------------------------------------------------------
 
@@ -163,6 +179,12 @@ ALTER TABLE `images`
   ADD PRIMARY KEY (`imgID`);
 
 --
+-- Indeksy dla tabeli `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`orderID`);
+
+--
 -- Indeksy dla tabeli `tickets`
 --
 ALTER TABLE `tickets`
@@ -175,32 +197,38 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT dla zrzuconych tabel
 --
 
 --
--- AUTO_INCREMENT for table `events`
+-- AUTO_INCREMENT dla tabeli `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `images`
+-- AUTO_INCREMENT dla tabeli `images`
 --
 ALTER TABLE `images`
-  MODIFY `imgID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `imgID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `tickets`
+-- AUTO_INCREMENT dla tabeli `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `ticketID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ticketID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
