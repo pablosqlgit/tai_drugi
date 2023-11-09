@@ -2,6 +2,7 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . '/tai_drugi/conn.php';
     
     session_start();
+    $_SESSION['logstatus'];
     if($_SESSION['logstatus'] === "yes"){
         header("Location: ../main/main.php");
     }
