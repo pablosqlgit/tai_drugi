@@ -1,21 +1,11 @@
 -- phpMyAdmin SQL Dump
-<<<<<<< HEAD
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 09, 2023 at 11:03 PM
+-- Generation Time: Nov 09, 2023 at 11:05 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
-=======
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Czas generowania: 09 Lis 2023, 23:19
--- Wersja serwera: 10.4.27-MariaDB
--- Wersja PHP: 8.2.0
->>>>>>> 854ae7bccb2459ebeb1ebd1b09f5e0bc59fdeb3b
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -74,15 +64,9 @@ INSERT INTO `events` (`id`, `name`, `description`, `location`, `date`) VALUES
 --
 
 CREATE TABLE `images` (
-<<<<<<< HEAD
   `imgID` int NOT NULL,
   `src` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `eventID` int NOT NULL
-=======
-  `imgID` int(11) NOT NULL,
-  `src` varchar(255) NOT NULL,
-  `eventID` int(11) NOT NULL
->>>>>>> 854ae7bccb2459ebeb1ebd1b09f5e0bc59fdeb3b
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -103,7 +87,6 @@ INSERT INTO `images` (`imgID`, `src`, `eventID`) VALUES
 --
 
 CREATE TABLE `orders` (
-<<<<<<< HEAD
   `orderID` int NOT NULL,
   `userName` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `eventName` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
@@ -127,25 +110,6 @@ INSERT INTO `orders` (`orderID`, `userName`, `eventName`, `eventID`, `ticketPric
 (29, 'magic123', 'Drake', 4, 1000, 'Gold Ticket', '2023-11-09 22:58:58'),
 (30, 'magic123', 'Pitbull', 3, 1000, 'VIP+ Ticket', '2023-11-09 23:01:18'),
 (31, 'magic123', 'Pitbull', 3, 1000, 'VIP+ Ticket', '2023-11-09 23:02:49');
-=======
-  `orderID` int(11) NOT NULL,
-  `userName` varchar(255) NOT NULL,
-  `eventName` varchar(255) NOT NULL,
-  `eventID` int(11) NOT NULL,
-  `ticketPrice` float NOT NULL,
-  `ticketDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `ticketName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Zrzut danych tabeli `orders`
---
-
-INSERT INTO `orders` (`orderID`, `userName`, `eventName`, `eventID`, `ticketPrice`, `ticketDate`, `ticketName`) VALUES
-(24, 'admin', 'Drake', 4, 1000, '0000-00-00 00:00:00', 'Gold Ticket'),
-(25, 'admin', 'The Weeknd', 2, 700, '0000-00-00 00:00:00', 'VIP Ticket'),
-(26, 'admin', 'Pitbull', 3, 1000, '0000-00-00 00:00:00', 'VIP+ Ticket');
->>>>>>> 854ae7bccb2459ebeb1ebd1b09f5e0bc59fdeb3b
 
 -- --------------------------------------------------------
 
@@ -158,11 +122,7 @@ CREATE TABLE `tickets` (
   `eventID` int NOT NULL,
   `ticketName` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `price` float NOT NULL,
-<<<<<<< HEAD
   `quantity` int NOT NULL
-=======
-  `quantity` int(11) NOT NULL
->>>>>>> 854ae7bccb2459ebeb1ebd1b09f5e0bc59fdeb3b
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -188,17 +148,10 @@ INSERT INTO `tickets` (`ticketID`, `eventID`, `ticketName`, `price`, `quantity`)
 --
 
 CREATE TABLE `users` (
-<<<<<<< HEAD
   `id` int NOT NULL,
   `login` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `pass` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `phone` varchar(20) COLLATE utf8mb4_general_ci NOT NULL
-=======
-  `id` int(11) NOT NULL,
-  `login` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
-  `phone` varchar(20) NOT NULL
->>>>>>> 854ae7bccb2459ebeb1ebd1b09f5e0bc59fdeb3b
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -224,7 +177,7 @@ INSERT INTO `users` (`id`, `login`, `pass`, `phone`) VALUES
 --
 DROP TABLE IF EXISTS `cheapest`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cheapest`  AS SELECT `eventID` AS `eventID`, min(`price`) AS `lowest_value` FROM `tickets` GROUP BY `eventID``eventID`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cheapest`  AS SELECT `eventID` AS `eventID`, min(`price`) AS `lowest_value` FROM `tickets` GROUP BY `eventID` ;
 
 --
 -- Indexes for dumped tables
@@ -244,23 +197,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-<<<<<<< HEAD
   MODIFY `orderID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-=======
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT dla tabeli `tickets`
---
-ALTER TABLE `tickets`
-  MODIFY `ticketID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT dla tabeli `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
->>>>>>> 854ae7bccb2459ebeb1ebd1b09f5e0bc59fdeb3b
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
