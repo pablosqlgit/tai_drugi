@@ -1,4 +1,5 @@
 <?php
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/tai_drugi/conn.php';
     session_start();
     if($_SESSION['logstatus'] === "no") {
     header("Location: ../login/login.php");
@@ -22,7 +23,7 @@
   <body>
     <nav>
       <div class='functional-buttons'>
-        <form action="main.php" method="post">
+        <form action="../main/main.php" method="post">
           <input type="submit" value="Wróć" id="back-button" name="backbutton">
         </form>
         <span>
@@ -44,6 +45,14 @@
       <h1>
         Order history
       </h1>
+      <?php
+        $username = $_SESSION['username'];
+        $orderedQ = "SELECT * FROM orders WHERE userName='$username'";
+        $orderedTickers = mysqli_query($conn,$username);
+        while($ticket = mysqli_fetch_assoc($orderedTickers)){
+          echo $ticket['eventName'];
+        }
+      ?>
     </article>
 </body>
 </html>

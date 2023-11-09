@@ -32,9 +32,8 @@
   
   $imageSrc = $imageInfo['src'];
   
-  $_SESSION['urlQ'] = $urlQ;
   $_SESSION['eventName'] = $eventName;
-  
+
   // echo $imageSrc;
 ?>
 <!DOCTYPE html>
