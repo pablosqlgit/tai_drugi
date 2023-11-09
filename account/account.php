@@ -48,9 +48,9 @@
       <?php
         $username = $_SESSION['username'];
         $orderedQ = "SELECT * FROM orders WHERE userName='$username'";
-        $orderedTickers = mysqli_query($conn,$username);
+        $orderedTickers = mysqli_query($conn,$orderedQ);
         while($ticket = mysqli_fetch_assoc($orderedTickers)){
-          echo $ticket['eventName'];
+          echo $ticket['eventName'] . $ticket['ticketPrice'] . " " . $ticket['ticketDate'] . "<br>";
         }
       ?>
     </article>
