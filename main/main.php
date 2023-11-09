@@ -22,8 +22,8 @@
         </h1>
       </span>
       <div class='functional-buttons'>
-        <form method='post'>
-          <input type='submit' value='Moje konto' />      
+        <form method='post' action="../account/account.php">
+          <input type='submit' value='Moje konto' name="my-account"/>      
         </form>
         <form action="main.php" method="post">
           <input type='submit' value='Wyloguj się' name='logout_input' />      

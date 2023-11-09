@@ -1,8 +1,16 @@
 <?php 
   require_once $_SERVER['DOCUMENT_ROOT'] . '/tai_drugi/conn.php';
-
+  session_start();
+  if($_SESSION['logstatus'] === "no") {
+    header("Location: ../login/login.php");
+  }
+  
+  if (isset($_POST['logout_input'])) {
+    $_SESSION['logstatus'] = "no";
+    header('Location: ../login/login.php');
+  }
+  
   $urlQ = str_replace('event=', '', $_SERVER['QUERY_STRING']);
-
   // echo $urlQ;
 
   $eventQuery = "SELECT name, description, location, date FROM events WHERE id=$urlQ";
@@ -33,7 +41,7 @@
   <body>
     <nav>
       <div class='functional-buttons'>
-        <form action="main.php" method="get">
+        <form action="main.php" method="post">
           <input type="submit" value="Wróć" id="back-button" name="backbutton">
         </form>
         <span>
@@ -43,10 +51,10 @@
         </span>
       </div>
       <div class='functional-buttons'>
-        <form method='post' >
-          <input type='submit' value='Moje konto' />      
+        <form method='post' action='../account/account.php'>
+          <input type='submit' value='Moje konto' name="my-account"/>   
         </form>
-        <form action="main.php" method="post">
+        <form action="event.php" method="post">
           <input type='submit' value='Wyloguj się' name='logout_input' />      
         </form>
       </div>
