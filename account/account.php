@@ -8,6 +8,8 @@
     $_SESSION['logstatus'] = "no";
     header('Location: ../login/login.php');
     }
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,5 +40,10 @@
         </form>
       </div>
     </nav>
+    <article id="accounts-container">
+      <h1>
+        Order history
+      </h1>
+    </article>
 </body>
 </html>
