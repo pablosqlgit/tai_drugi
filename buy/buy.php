@@ -8,6 +8,8 @@ session_start();
   </head>
   <body>
     <?php 
+      error_reporting(0);
+
       require_once $_SERVER['DOCUMENT_ROOT'] . '/tai_drugi/conn.php';
       $urlQ = str_replace('ticket=', '', $_SERVER['QUERY_STRING']);
 
@@ -21,12 +23,13 @@ session_start();
       $ticketIDQ = "SELECT ticketName FROM tickets WHERE ticketID='$urlQ'";
       $ticketID = mysqli_query($conn,$ticketIDQ);
       $ticketName = mysqli_fetch_assoc($ticketID);
-
+  
+      $currDate = date("Y-m-d H:i:s");
 
       if(mysqli_num_rows($res) > 0){
         while($row = mysqli_fetch_assoc($res)){
           $currdate = date('Y-m-d');
-          $insertQ = "INSERT INTO orders VALUES(null, '$username', '$eventName', '$row[eventID]', '$row[price]','','$ticketName[ticketName]')";
+          $insertQ = "INSERT INTO orders VALUES(null, '$username', '$eventName', '$row[eventID]', '$row[price]','$ticketName[ticketName]', '$currDate')";
           mysqli_query($conn, $insertQ);
           echo "
             <div class='ordered'>
