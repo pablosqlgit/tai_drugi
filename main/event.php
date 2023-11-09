@@ -79,17 +79,33 @@
             <span>Lokalizacja: <?php echo $eventLocat;?></span> <br>
           </div>
         </div>
-        <div id="buying-div">
-          <div>
-            <span><?php echo $eventDesc;?></span> <br> 
+        <div class='tickets-table'>
+          <div class='tickets'>
+            <?php 
+              require_once $_SERVER['DOCUMENT_ROOT'] . '/tai_drugi/conn.php';
+              $urlQ = str_replace('event=', '', $_SERVER['QUERY_STRING']);
+
+              $selectQ = "SELECT * FROM tickets WHERE eventID = $urlQ";
+              $res = mysqli_query($conn, $selectQ);
+
+              if(mysqli_num_rows($res) > 0){
+                while($row = mysqli_fetch_assoc($res)){
+                  // echo $row['ticketName'];
+                  echo "
+                    <div class='ticket'>
+                      <span class='ticket-name'>$row[ticketName]</span>
+                      <div>
+                        <span>$row[price]PLN</span>
+                        <div>
+                          <a href='../buy/buy.php?ticket=$row[ticketID]'>Kup bilet</a>
+                        </div>
+                      </div>
+                    </div>
+                  ";
+                }
+              }
+            ?>
           </div>
-          <!-- miejsce na button -->
-          <div>
-            <form method="post">
-              <input type='submit' value='Kup se bilet' name='buy-ticket'></input>
-            </form>
-          </div>
-        </div>
       </div>
     </article>
 </body>
