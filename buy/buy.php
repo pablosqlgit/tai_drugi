@@ -12,6 +12,9 @@
 
       if(mysqli_num_rows($res) > 0){
         while($row = mysqli_fetch_assoc($res)){
+          $currDate = date('Y-m-d');
+          $insertQ = "INSERT INTO orders VALUES(null, 'username', 'eventName', $row[eventID], $row[price], $currDate)";
+          mysqli_query($conn, $insertQ);
           echo "
             <div class='ordered'>
               <div>
