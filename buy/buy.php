@@ -16,12 +16,17 @@ session_start();
 
       $username = $_SESSION['username'];
       $eventName = $_SESSION['eventName'];
+      $ticketName = $_SESSION['ticketName'];
+
+      $ticketIDQ = "SELECT ticketName FROM tickets WHERE ticketID='$urlQ'";
+      $ticketID = mysqli_query($conn,$ticketIDQ);
+      $ticketName = mysqli_fetch_assoc($ticketID);
 
 
       if(mysqli_num_rows($res) > 0){
         while($row = mysqli_fetch_assoc($res)){
           $currdate = date('Y-m-d');
-          $insertQ = "INSERT INTO orders VALUES(null, '$username', '$eventName', '$row[eventID]', '$row[price]','')";
+          $insertQ = "INSERT INTO orders VALUES(null, '$username', '$eventName', '$row[eventID]', '$row[price]','','$ticketName[ticketName]')";
           mysqli_query($conn, $insertQ);
           echo "
             <div class='ordered'>

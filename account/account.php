@@ -49,8 +49,10 @@
         $username = $_SESSION['username'];
         $orderedQ = "SELECT * FROM orders WHERE userName='$username'";
         $orderedTickers = mysqli_query($conn,$orderedQ);
+
+        $i = 1;
         while($ticket = mysqli_fetch_assoc($orderedTickers)){
-          echo $ticket['eventName'] . $ticket['ticketPrice'] . " " . $ticket['ticketDate'] . "<br>";
+          echo $i++ . ". Wykonawca: ".$ticket['eventName'] . " Cena: ". $ticket['ticketPrice'] . " Typ biletu " .$ticket['ticketName']." Data zakupu: " . $ticket['ticketDate'] ."<br>";
         }
       ?>
     </article>

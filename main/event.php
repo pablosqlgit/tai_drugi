@@ -89,6 +89,7 @@
 
               $selectQ = "SELECT * FROM tickets WHERE eventID = $urlQ";
               $res = mysqli_query($conn, $selectQ);
+              // $res2 = mysqli_query($conn, $selectQ);
 
               if(mysqli_num_rows($res) > 0){
                 while($row = mysqli_fetch_assoc($res)){
@@ -106,6 +107,10 @@
                   ";
                 }
               }
+
+              // $ticketID = mysqli_fetch_assoc($res2);
+              // $_SESSION['ticketName'] = $ticketID['ticketID'];
+              // echo $_SESSION['ticketName'];
             ?>
           </div>
       </div>
