@@ -253,8 +253,9 @@ nav span h1 {
 .tickets-table .tickets .ticket div div a:hover {
   cursor: pointer;
   scale: 1.05;
-/* --------------------------- accounts ------------------------------- */
-
+}
+  /* --------------------------- accounts ------------------------------- */
+  
 #accounts-container{
   padding-top: 100px;
   width: 100vw;
@@ -336,4 +337,4 @@ nav span h1 {
   to {
     opacity: 1;
   }
-} /*# sourceMappingURL=style.css.map */
+}
