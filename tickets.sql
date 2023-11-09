@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 09 Lis 2023, 11:26
--- Wersja serwera: 10.4.22-MariaDB
--- Wersja PHP: 8.1.2
+-- Czas generowania: 09 Lis 2023, 23:19
+-- Wersja serwera: 10.4.27-MariaDB
+-- Wersja PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,18 +44,18 @@ CREATE TABLE `events` (
   `description` varchar(500) NOT NULL,
   `location` varchar(255) NOT NULL,
   `date` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Zrzut danych tabeli `events`
 --
 
 INSERT INTO `events` (`id`, `name`, `description`, `location`, `date`) VALUES
-(1, 'Travis Scott ', 'Koncert Travisa Scotta w Poznań, Poland', 'Poznań', '2023-11-29'),
+(1, 'Travis Scott', 'Koncert Travisa Scotta w Poznań, Poland', 'Poznań', '2023-11-29'),
 (2, 'The Weeknd', 'Koncert The Weeknd w Poznań, Poland', 'Poznań', '2023-11-09'),
-(3, 'Pitbull ', 'Koncert Pitbull w Poznań, Poland', 'Poznań', '2023-12-15'),
-(4, 'Drake ', 'Koncert Drake w Poznań, Poland', 'Poznań', '2024-01-20'),
-(5, 'Future ', 'Koncert Future w Poznań, Poland', 'Poznań', '2024-01-25');
+(3, 'Pitbull', 'Koncert Pitbull w Poznań, Poland', 'Poznań', '2023-12-15'),
+(4, 'Drake', 'Koncert Drake w Poznań, Poland', 'Poznań', '2024-01-20'),
+(5, 'Future', 'Koncert Future w Poznań, Poland', 'Poznań', '2024-01-25');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE `images` (
   `imgID` int(11) NOT NULL,
   `src` varchar(255) NOT NULL,
   `eventID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Zrzut danych tabeli `images`
@@ -88,12 +88,22 @@ INSERT INTO `images` (`imgID`, `src`, `eventID`) VALUES
 
 CREATE TABLE `orders` (
   `orderID` int(11) NOT NULL,
-  `userName` int(11) NOT NULL,
+  `userName` varchar(255) NOT NULL,
   `eventName` varchar(255) NOT NULL,
   `eventID` int(11) NOT NULL,
   `ticketPrice` float NOT NULL,
-  `ticketDate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `ticketDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ticketName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Zrzut danych tabeli `orders`
+--
+
+INSERT INTO `orders` (`orderID`, `userName`, `eventName`, `eventID`, `ticketPrice`, `ticketDate`, `ticketName`) VALUES
+(24, 'admin', 'Drake', 4, 1000, '0000-00-00 00:00:00', 'Gold Ticket'),
+(25, 'admin', 'The Weeknd', 2, 700, '0000-00-00 00:00:00', 'VIP Ticket'),
+(26, 'admin', 'Pitbull', 3, 1000, '0000-00-00 00:00:00', 'VIP+ Ticket');
 
 -- --------------------------------------------------------
 
@@ -107,7 +117,7 @@ CREATE TABLE `tickets` (
   `ticketName` varchar(255) NOT NULL,
   `price` float NOT NULL,
   `quantity` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Zrzut danych tabeli `tickets`
@@ -136,7 +146,7 @@ CREATE TABLE `users` (
   `login` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `phone` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Zrzut danych tabeli `users`
@@ -151,7 +161,8 @@ INSERT INTO `users` (`id`, `login`, `pass`, `phone`) VALUES
 (11, 'azazaz12', 'zaq1@WSX', '222222222'),
 (12, 'azazaz123', 'zaq1@WSX', '222222222'),
 (13, 'zaqzaq', 'zaq1@WSX', '12446778899'),
-(14, 'admin', 'admin', '');
+(14, 'admin', 'admin', ''),
+(15, 'chokemedaddy1', '$2y$10$c.DAon0mwmA6709IRLOZ5.uHv02Z3HiUWqUphxKyzVoChtD3g4kcO', '111111111');
 
 -- --------------------------------------------------------
 
@@ -160,7 +171,7 @@ INSERT INTO `users` (`id`, `login`, `pass`, `phone`) VALUES
 --
 DROP TABLE IF EXISTS `cheapest`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cheapest`  AS SELECT `eventID` AS `eventID`, min(`price`) AS `lowest_value` FROM `tickets` GROUP BY `eventID` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cheapest`  AS SELECT `eventID` AS `eventID`, min(`price`) AS `lowest_value` FROM `tickets` GROUP BY `eventID``eventID`  ;
 
 --
 -- Indeksy dla zrzutów tabel
@@ -216,7 +227,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT dla tabeli `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT dla tabeli `tickets`
@@ -228,7 +239,7 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
