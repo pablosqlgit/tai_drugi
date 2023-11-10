@@ -1,7 +1,7 @@
 <?php 
   require_once $_SERVER['DOCUMENT_ROOT'] . '/tai_drugi/conn.php';
   session_start();
-  if($_SESSION['logstatus'] === "no") {
+  if($_SESSION['logstatus'] !== "yes") {
     header("Location: ../login/login.php");
   }
 
