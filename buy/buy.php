@@ -18,7 +18,6 @@ session_start();
 
       $username = $_SESSION['username'];
       $eventName = $_SESSION['eventName'];
-      $ticketName = $_SESSION['ticketName'];
 
       $ticketIDQ = "SELECT ticketName FROM tickets WHERE ticketID='$urlQ'";
       $ticketID = mysqli_query($conn,$ticketIDQ);
@@ -28,8 +27,8 @@ session_start();
 
       if(mysqli_num_rows($res) > 0){
         while($row = mysqli_fetch_assoc($res)){
-          $currdate = date('Y-m-d');
-          $insertQ = "INSERT INTO orders VALUES(null, '$username', '$eventName', '$row[eventID]', '$row[price]','$ticketName[ticketName]', '$currDate')";
+          $currdate = date('Y-m-d') . " " . date('h:i:s');
+          $insertQ = "INSERT INTO orders VALUES(null, '$username', '$eventName', '$row[eventID]', '$ticketName[ticketName]','$row[price]', '$currDate')";
           mysqli_query($conn, $insertQ);
           echo "
             <div class='ordered'>

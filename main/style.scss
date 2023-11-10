@@ -248,6 +248,12 @@ nav span h1{
   }
 }
 
+@media(max-width: 1240px){
+  .tickets{
+    width: 70% !important;
+  }
+}
+
 @media (max-width: 1368px) {
   section {
     grid-template-columns: repeat(3, 1fr);
@@ -305,6 +311,9 @@ nav span h1{
   }
   nav .functional-buttons {
     gap: 15px;
+  }
+  .tickets{
+    width: 90% !important;
   }
 }
 @keyframes fadeIn {
