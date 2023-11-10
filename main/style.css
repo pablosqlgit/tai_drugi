@@ -253,6 +253,11 @@ nav span h1 {
 .tickets-table .tickets .ticket div div a:hover {
   cursor: pointer;
   scale: 1.05;
+/* --------------------------- accounts ------------------------------- */
+
+#accounts-container{
+  padding-top: 100px;
+  width: 100vw;
 }
 
 /* ---------------------------- media --------------------------------- */
