@@ -28,7 +28,7 @@ session_start();
 
       if(mysqli_num_rows($res) > 0){
         while($row = mysqli_fetch_assoc($res)){
-          $currdate = date('Y-m-d');
+          $currdate = date('Y-m-d') . " " . date('h:i:s');
           $insertQ = "INSERT INTO orders VALUES(null, '$username', '$eventName', '$row[eventID]', '$row[price]','$ticketName[ticketName]', '$currDate')";
           mysqli_query($conn, $insertQ);
           echo "
