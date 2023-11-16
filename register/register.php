@@ -16,7 +16,7 @@
             $login = $_POST["login"];
             $pass = $_POST["pass"];
             $hash = password_hash($pass,PASSWORD_DEFAULT);
-            $phone = $_POST["phone"]; 
+            $phone = $_POST["dial"] . " " . $_POST["phone"];
 
             $insertQ = "INSERT INTO users VALUES(null, '$login', '$hash' , '$phone')";
             $selectQ = "SELECT * FROM users WHERE login = '$login'";

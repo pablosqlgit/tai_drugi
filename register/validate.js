@@ -12,6 +12,7 @@ const loginControl = document.querySelector(".login-control")
 const passControl = document.querySelector(".pass-control")
 const phoneControl = document.querySelector(".phone-control")
 const codeSearch = document.querySelector(".code-search")
+const dial = document.querySelector(".dial")
 
 const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 const capital = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -24,6 +25,7 @@ let codes = []
 let select = "+48"
 let ok = 0
 selectedCode.innerText = select
+dial.value = select
 
 const notSame = (item) => {
   if(item.target.name === 'pass'){
@@ -66,6 +68,7 @@ codesList.addEventListener("click", (e) => {
   if(e.target.className === 'code'){
     select = e.target.innerText
     selectedCode.innerText = select
+    dial.value = select
     codesList.style.display = "none"
   }
 })
